@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href='//fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/main.css">
+  <title>AJAX with JavaScript3</title>
+  <script>
+    //need to set up web server first, if run on local machine MAMP for mac or WAMP for windows
+    //opens a NEW XMLHttpRequest Object request and places it on xhr
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      //if readyState comes back with 4, proceed with Callback function
+      if (xhr.readyState === 4) {
+        document.getElementById('ajax').innerHTML = xhr.responseText;
+      }
+    };
+    //OPENS the ajax request using GET method (to receive) and displays url/html file
+    xhr.open('GET', 'sidebar.html');
+    function sendAJAX() {
+      //SENDS any other ajax request, in this case nothing
+      xhr.send();
+      //make button disapear once function sendAJAX is executed
+      document.getElementById('load').style.display = 'none';
+    }
+  </script>
+</head>
+<body>
+  <div class="grid-container centered">
+    <div class="grid-100">
+      <div class="contained">
+        <div class="grid-100">
+          <div class="heading">
+            <h1>Bring on the AJAX</h1>
+            <button id="load" onclick="sendAJAX()">Push this</button>
+          </div>
+          <div id="ajax">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
